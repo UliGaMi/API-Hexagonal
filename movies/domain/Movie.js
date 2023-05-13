@@ -1,8 +1,10 @@
-class Movie{
-    constructor(name, description, duration, ruta){
+export class Movie{
+    constructor(id, name, duration, ruta, description, director){
+        this.id = id;
         this.name = name;
-        this.description = description;
         this.duration = duration;
+        this.description = description;
         this.ruta = ruta;
+        this.director = director;
     }
 }
