@@ -1,23 +1,17 @@
 
 export class MoviesController {
+  constructor(getAllMovies) {
+    this.getAllMovies = getAllMovies;
+  }
 
-    constructor(getAllMovies = {}) {
-      this.getAllMovies = getAllMovies;
-    }
-  
-    async controllerGetAll(req, res) {
-      try {
-        console.log('Hola');
-        const movies = await (this.getAllMovies).getAll();
-        res.json(movies);
-      } catch (error) {
-        res.send('error')
-      }
-    }
-
+  async controllerGetAll(req, res, next) {
+    
+      console.log('Hola in controllerGetAll');
+      const movies = await this.getAllMovies.getAll();
+      res.json(movies);
+    
+  }
 }
-
-
 
   /*
     async create(req, res, next) {

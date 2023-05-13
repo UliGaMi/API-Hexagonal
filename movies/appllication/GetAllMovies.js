@@ -1,10 +1,10 @@
 import { pool } from '../../db/mysql.js';
 import { Movie } from '../domain/Movie.js'
 
-export class GetAllMovies {
+export  class GetAllMovies {
 
     async getAll(){
-        console.log('Entré')
+        console.log('Entré a GetAllMovies getAll')
         const [movies] = await pool.query('SELECT * FROM movies');
         console.log(movies);
         return movies.map((movie) => { 
