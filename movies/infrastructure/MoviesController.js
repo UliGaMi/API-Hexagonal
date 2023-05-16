@@ -1,26 +1,20 @@
-
 export class MoviesController {
-  constructor(getAllMovies) {
+  constructor(getAllMovies, postMovie) {
     this.getAllMovies = getAllMovies;
+    this.postMovie = postMovie;
   }
 
   async controllerGetAll(req, res, next) {
+    console.log("Hola in controllerGetAll");
+    const movies = await this.getAllMovies.getAll();
+    res.status(200).json(movies);
+  }
+
+  async controllerCreate(req, res) {
     
-      console.log('Hola in controllerGetAll');
-      const movies = await this.getAllMovies.getAll();
-      res.json(movies);
-    
+      const movieData = req.body;
+      const movie = await this.postMovie.post(movieData); 
+      res.status(201).json(movie);
+   
   }
 }
-
-  /*
-    async create(req, res, next) {
-      try {
-        const productData = req.body;
-        const product = await this.createProductUseCase.execute(productData);
-        res.status(201).json(product);
-      } catch (error) {
-        next(error);
-      }
-    }
-    */
